@@ -1,0 +1,45 @@
+@use "@lib/styles" as s;
+
+@keyframes pulse-color {
+    0% { color: s.color(burnt-orange); }
+    50% { color: s.color(honey); }
+    100% { color: s.color(burnt-orange); }
+}
+
+.GridView-grid-cell-top-gap {
+    padding-top: 1em;
+}
+
+.GridView-container {
+    width:       100%;
+    height:      fit-content;
+    display:     grid;
+    user-select: none;
+    cursor:      pointer;
+
+    .GridView-grid-cell-wrapper {
+        overflow:       hidden;
+        white-space:    nowrap;
+
+        text-transform: uppercase;
+        display:        inline-block;
+        color:          s.color(burnt-orange);
+        text-overflow:  ellipsis;
+    }
+
+    .GridView-grid-cell-pulse {
+        animation: 300ms linear pulse-color;
+    }
+
+
+    .GridView-grid-cell-header {
+        color: s.color(honey) !important;
+    }
+
+
+    .GridView-grid-cell-wrapper-highlighted {
+        background: s.color(honey) !important;
+        color: s.theme("background") !important;;
+
+    }
+}

@@ -1,0 +1,88 @@
+@use "@lib/styles" as s;
+
+.OvalButton {
+    display:         flex;
+    flex-direction:  row;
+    align-items:     flex-end;
+    width:           200px;
+    height:          42px;
+    padding-right:   12px;
+    padding-bottom:  6px;
+    white-space:     nowrap;
+    text-overflow:   ellipsis;
+    justify-content: flex-end;
+    border-radius:   20px;
+    font-size:       1.1em;
+    border:          0;
+    background:      s.color(harvestgold);
+    color:           s.theme("background");
+    cursor:          pointer;
+    margin:          2px;
+    user-select:     none;
+
+    &.OvalButton__tall {
+        height: calc(100% - 10px);
+    }
+
+    &.OvalButton__shrink {
+        width: fit-content;
+    }
+
+    &.OvalButton__grow {
+        width: calc(100% - 16px);
+    }
+
+    &.OvalButton__active {
+        background: s.color(moon-beam);
+    }
+
+    &.OvalButton--disabled {
+        background: s.color(blue-gray);
+
+        &:hover { background: s.color(blue-gray); }
+
+        &:active { background: s.color(blue-gray); }
+
+        &:disabled { background: s.color(blue-gray); }
+    }
+
+    &.active { background: s.color(cool); }
+
+    &:active { background-color: s.color(cool); }
+
+    &:hover { background: s.color(ghost); }
+
+    &:disabled { background: s.color(blue-gray); }
+
+    &.OvalButton__status-success {
+        background: s.theme("success");
+        color:      s.theme("background");
+
+        &.active { background: s.theme("success"); }
+
+        &:hover { filter: hue-rotate(90deg); }
+
+        &:active { filter: hue-rotate(120deg); }
+
+        &:disabled { filter: saturate(30%); }
+
+    }
+
+    &.OvalButton__status-error {
+        background: s.theme("error") !important;
+        color:      s.theme("text") !important;
+
+        &.active { background: s.theme("error"); }
+
+        &:hover { filter: saturate(90%); }
+
+        &:active { filter: saturate(80%); }
+
+        &:disabled { filter: saturate(30%); }
+
+    }
+
+    &__animate-blink {
+        animation: blink 1s infinite;
+    }
+}

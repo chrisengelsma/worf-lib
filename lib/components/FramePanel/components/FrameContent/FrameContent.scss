@@ -1,0 +1,59 @@
+@use "@lib/styles" as s;
+
+.FrameContent {
+    transition:    all 150ms linear;
+    z-index:       1;
+    display:       flex;
+    position:      absolute;
+
+    top:           0;
+    right:         0;
+    left:          0;
+    bottom:        0;
+    overflow-y:    auto;
+
+    background:    s.theme("background");
+    border-radius: 0;
+
+    &__buffer {
+        transition: all 150ms linear;
+        position:   relative;
+        display:    flex;
+        flex-grow:  1;
+        overflow-y: auto;
+        margin:     12px;
+
+        &-full {
+            margin-top:    0;
+            margin-bottom: 0;
+        }
+    }
+
+    &__elbow {
+        &__top-right { border-top-right-radius: 20px;}
+
+        &__top-left { border-top-left-radius: 20px;}
+
+        &__bottom-left { border-bottom-left-radius: 20px;}
+
+        &__bottom-right { border-bottom-right-radius: 20px;}
+
+    }
+
+    &__left {
+        left: 20px;
+
+        &__links { left: 100px; }
+
+        &-expanded { left: 220px; }
+    }
+
+    &__right {
+        right: 20px;
+
+        &__links { right: 100px; }
+
+        &-expanded { right: 220px;}
+    }
+
+}

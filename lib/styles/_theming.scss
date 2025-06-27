@@ -1,0 +1,29 @@
+@use "sass:map";
+@use "sass:list";
+@use "./_colors" as colors;
+
+@function color($key) {
+    @return map.get(colors.$colors, $key);
+}
+
+@function theme($key) {
+    @return map.get($theme, $key);
+}
+
+@function scale-value($key, $index) {
+    @return list.nth(map.get($scales, $key), $index);
+}
+
+$theme:  (
+             // Common
+             background: #000,
+             text: color(space-white),
+             // Statuses
+             success: color(mint-green),
+             warning: color(tangerine),
+             error: color(cherry),
+         );
+
+$scales: (
+             traffic-light: (theme("success"), theme("warning"), color("error"))
+         );

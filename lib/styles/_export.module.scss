@@ -1,0 +1,13 @@
+@use "sass:string";
+@use "palettes" as p;
+@use "colors" as c;
+
+:export {
+    @each $key, $value in p.$palettes {
+        palette-#{ string.unquote($key) }: $value;
+    }
+
+    @each $key, $value in c.$colors {
+        color-#{ "" + $key }: $value;
+    }
+}

@@ -1,0 +1,62 @@
+@use "sass:map";
+@use "theming" as t;
+
+$warm-palette:        (
+                          t.color(rose-blush),
+                          t.color(tomato-red),
+                          t.color(peach),
+                          t.color(almond),
+                          t.color(pumpkinshade)
+                      );
+
+$cold-palette:        (
+                          t.color(sky),
+                          t.color(bluey),
+                          t.color(african-violet),
+                          t.color(ghost),
+                          t.color(moonbeam),
+                      );
+
+
+$tng-palette:         (
+                          t.color(c55),
+                          t.color(c54),
+                          t.color(c53),
+                          t.color(c52),
+                          t.color(c51),
+                      );
+
+$blue-alert-palette:  (
+                          t.color(ice),
+                          t.color(cool),
+                          t.color(raspberry),
+                          t.color(evening),
+                          t.color(midnight),
+                      );
+
+$engineering-palette: (
+                          t.color(butter),
+                          t.color(honey),
+                          t.color(harvestgold),
+                          t.color(tangerine),
+                          t.color(october-sunset),
+                      );
+
+$red-alert-palette:   (
+                          t.color(cherry),
+                          t.color(cardinal),
+                          t.color(lumberjack),
+                          t.color(ketchup),
+                          t.color(sanguine),
+                      );
+
+$palettes:            (
+                          warm: $warm-palette,
+                          cold: $cold-palette,
+                          engineering: $engineering-palette,
+                          tng: $tng-palette,
+                          blue-alert: $blue-alert-palette,
+                          red-alert: $red-alert-palette,
+                          // Other palettes...
+                      );
+

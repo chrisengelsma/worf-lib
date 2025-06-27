@@ -1,0 +1,41 @@
+.FramePanel {
+    position: absolute;
+    height:   100%;
+    width:    100%;
+
+    &__frame {
+
+        transition:     all 150ms linear;
+        top:            0;
+        left:           0;
+        right:          0;
+        bottom:         0;
+        overflow:       hidden;
+
+        display:        flex;
+        flex-direction: column;
+        position:       absolute;
+
+        &-top-margin { top: 5px; }
+
+        &-right-margin { top: 5px; }
+
+        &-top-left-elbow { border-top-left-radius: 70px; }
+
+        &-bottom-left-elbow { border-bottom-left-radius: 70px; }
+
+        &-top-right-elbow { border-top-right-radius: 70px; }
+
+        &-bottom-right-elbow { border-bottom-right-radius: 70px; }
+    }
+
+    &__content {
+        position:        relative;
+        justify-content: space-between;
+        display:         flex;
+        flex-direction:  row;
+        width:           100%;
+        flex-grow:       1;
+    }
+}
+

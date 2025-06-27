@@ -1,0 +1,117 @@
+$idle-color:        var(--idle-color, grey);
+$active-color:      var(--active-color, red);
+$line-idle-width:   var(--line-idle-width, 2px);
+$line-active-width: var(--line-active-width, 5px);
+$line-style:        var(--line-style, dashed);
+
+.Resizer {
+    position:            absolute;
+    height:              100%;
+    width:               100%;
+    margin:              0 auto;
+    padding:             0;
+    overflow:            hidden;
+
+    background-image:    linear-gradient(45deg, #000 25%, transparent 25%),
+                         linear-gradient(135deg, #000, 25%, transparent 25%),
+                         linear-gradient(45deg, transparent 75%, #000 75%),
+                         linear-gradient(135deg, transparent 75%, #000 75%);
+    background-size:     25px 25px; /* Must be a square */
+    background-position: 0 0, 12.5px 0, 12.5px -12.5px, 0px 12.5px; /* Must be half of one side of the square */
+}
+
+.Resizer__gutter {
+    position:   absolute;
+    display:    block;
+    transition: background-color 150ms linear;
+
+    &--alert {
+        background-color: $active-color;
+    }
+
+    &-top, &-bottom {
+        width: 100%;
+    }
+
+    &-left, &-right {
+        height: 100%;
+    }
+
+    &-top { top: 0; }
+
+    &-bottom { bottom: 0; }
+
+    &-left { left: 0; }
+
+    &-right { right: 0; }
+}
+
+.Resizer__resizer {
+    position: absolute;
+    z-index:  9;
+
+    &-top-left, &.bottom-right { cursor: nwse-resize; }
+
+    &-top-right, &-bottom-left { cursor: nesw-resize; }
+
+    &-top, &-bottom {
+        width:  100%;
+        height: 10px;
+        cursor: ns-resize;
+    }
+
+    &-left, &-right {
+        height: 100%;
+        width:  10px;
+        cursor: ew-resize;
+    }
+
+    &-top {
+        border-bottom: $line-idle-width dashed $idle-color;
+
+        &--alert { border-bottom: $line-active-width dashed $active-color; }
+    }
+
+    &-bottom {
+        border-top: $line-idle-width dashed $idle-color;
+
+        &--alert { border-top: $line-active-width dashed $active-color; }
+    }
+
+    &-left {
+        border-right: $line-idle-width dashed $idle-color;
+
+        &--alert { border-right: $line-active-width dashed $active-color; }
+    }
+
+    &-right {
+        border-left: $line-idle-width dashed $idle-color;
+
+        &--alert { border-left: $line-active-width dashed $active-color; }
+    }
+}
+
+.Resizer__resized-wrapper {
+    display:  block;
+    position: absolute;
+    overflow: auto;
+
+}
+
+.Resizer__resized-content {
+    width:    100%;
+    height:   100%;
+    display:  block;
+    position: relative;
+    overflow: auto;
+}
+
+.Resizer__resize-label {
+    position:   absolute;
+    display:    block;
+    background: rgba(255, 255, 255, 0.8);
+    border:     1px solid #212121;
+    padding:    4px;
+    color:      #212121;
+    margin-left: 8px;
+}

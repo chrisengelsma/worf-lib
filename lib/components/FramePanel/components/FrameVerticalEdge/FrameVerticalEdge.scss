@@ -1,0 +1,98 @@
+@use "sass:list";
+@use "sass:map";
+@use "@lib/styles" as s;
+
+@each $name, $palette in s.$palettes {
+
+    $len: list.length($palette);
+
+    .FrameVerticalEdge__theme-#{$name} {
+        transition: all 150ms linear;
+
+        background: list.nth($palette, 1);
+
+        @for $i from 0 through $len - 1 {
+
+            $ip1: $i % $len + 1;
+            $ip2: $ip1 % $len + 1;
+
+            &.FrameVerticalEdge__active-#{$i} {
+                background: list.nth($palette, $ip1) !important;
+            }
+
+            .FrameVerticalEdge__link-#{$i} {
+                background: list.nth($palette, $ip1) !important;
+            }
+        }
+    }
+}
+
+.FrameVerticalEdge {
+    color:      s.theme("background") !important;
+    display:    block;
+    position:   relative;
+    height:     100%;
+    width:      250px;
+}
+
+.FrameVerticalEdge__position-left {
+    text-align: right;
+}
+
+.FrameVerticalEdge__position-right {
+    text-align: left;
+}
+
+.FrameVerticalEdge__title {
+    display:      block;
+    color:        s.theme("background") !important;
+    padding:      42px 42px 12px 12px;
+
+    &.FrameVerticalEdge__no-title {
+        border-bottom: 0;
+    }
+}
+
+.FrameVerticalEdge__title-left {
+    margin-right: 20px;
+}
+
+.FrameVerticalEdge__title-right {
+    margin-left: 50px;
+}
+
+.FrameVerticalEdge__link {
+    cursor:     pointer;
+    display:    block;
+    color:      s.theme("background") !important;
+    border-top: 4px solid s.theme("background");
+    transition: all 150ms linear;
+}
+
+.FrameVerticalEdge__link-left {
+    margin-right: 20px;
+    padding:    36px 42px 12px 12px;
+}
+
+.FrameVerticalEdge__link-right {
+    margin-left: 20px;
+    padding:    36px 12px 12px 42px;
+}
+
+.FrameVerticalEdge__link:last-child {
+    border-bottom: 4px solid s.theme("background");
+}
+
+.FrameVerticalEdge {
+    width:       250px;
+    white-space: nowrap;
+}
+
+.FrameVerticalEdge:not(.FrameVerticalEdge__expanded) {
+    width: 150px;
+
+    .FrameVerticalEdge__label {
+        transition: all 150ms linear;
+        overflow:   hidden;
+    }
+}

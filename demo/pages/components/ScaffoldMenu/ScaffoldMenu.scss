@@ -1,0 +1,43 @@
+.ScaffoldMenu {
+
+    height:       100%;
+    border-right: 2px solid #efefef;
+    overflow-y:   auto;
+    overflow-x:   hidden;
+
+    &__select {
+        display:         block;
+        text-decoration: none;
+        width:           100%;
+        padding:         12px 12px 12px 8px;
+        background:      #212121;
+        outline:         none;
+        border:          none;
+        color:           #efefef;
+
+        &:hover {
+            background: #efefef !important;
+            color:      #212121 !important;
+        }
+    }
+
+    a {
+        display:         block;
+        text-decoration: none;
+        width:           100%;
+        padding:         12px 12px 12px 8px;
+    }
+
+    &__item {
+        &:hover, &--active {
+            a {
+                background: #efefef !important;
+                color:      #212121 !important;
+            }
+        }
+
+
+    }
+
+
+}
