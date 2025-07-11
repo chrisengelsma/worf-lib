@@ -6,9 +6,7 @@ import { FramePanelProps } from '../../FramePanel';
 const FrameVerticalEdge = (props: FramePanelProps & any) => {
 
   const handleLinkClick = (link: any) => {
-    if (props?.onLinkClick) {
-      props.onLinkClick(link);
-    }
+    props?.onLinkClick(link);
   };
 
   return (

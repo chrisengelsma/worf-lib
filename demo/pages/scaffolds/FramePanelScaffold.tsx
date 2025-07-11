@@ -18,7 +18,8 @@ const FramePanelScaffold = (_props: any): React.ReactElement => {
   const [ activeLinkIndex, setActiveLinkIndex ] = useState<number>(0);
 
   const handleLinkClick = (link: any): void => {
-    setActiveLinkIndex(links.indexOf(link));
+    _props?.onLogEvent(link);
+    setActiveLinkIndex(links.left.indexOf(link));
   };
 
   useEffect(() => {

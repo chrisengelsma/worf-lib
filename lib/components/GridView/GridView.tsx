@@ -10,7 +10,7 @@ export const GridView = (props: any) => {
 
   const [ columnCount, setColumnCount ] = React.useState<number>(props?.columnCount ?? 6);
   const [ data, setData ] = React.useState<any | any[]>(props?.data);
-  const containerRef: React.MutableRefObject<HTMLDivElement | null> = React.useRef<HTMLDivElement | null>(null);
+  const containerRef: React.RefObject<HTMLDivElement | null> = React.useRef<HTMLDivElement | null>(null);
 
   React.useEffect(() => {
     setData(props?.data);

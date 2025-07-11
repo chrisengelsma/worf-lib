@@ -5,11 +5,11 @@ const randomSectionData = () => {
   const sections: number = 10;
   const data: any = {};
   for (let i: number = 0; i < sections; i++) {
-    // const arr: string[] = array.zero(20).map(() => '');
-    // for (let j: number = 0; j < arr.length; j++) {
-    //   arr[ j ] = '' + random.randomInt(0, 999999) + random.randomInt(0, 999999) + random.randomInt(0, 999999);
-    // }
-    // data[ `Section ${ i + 1 }` ] = arr;
+    const arr: string[] = Array.from({ length: 100 }, () => '');
+    for (let j: number = 0; j < arr.length; j++) {
+      arr[ j ] = '' + Math.floor(Math.random() * 1000) + 1000;
+    }
+    data[ `Section ${ i + 1 }` ] = arr;
   }
   return data;
 };

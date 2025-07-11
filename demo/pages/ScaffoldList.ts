@@ -1,6 +1,8 @@
 import FramePanelScaffold from './scaffolds/FramePanelScaffold.tsx';
 import OvalButtonScaffold from './scaffolds/OvalButtonScaffold.tsx';
 import GridViewScaffold from './scaffolds/GridViewScaffold.tsx';
+import ThemingScaffold from './scaffolds/ThemingScaffold.tsx';
+import CalendarGridScaffold from './scaffolds/CalenderGridScaffold.tsx';
 
 const ThemeControl: any = {
   id: 'theme',
@@ -43,6 +45,10 @@ export default [
     ]
   },
   {
+    component: CalendarGridScaffold,
+    controls: []
+  },
+  {
     component: GridViewScaffold,
     controls: [
       { id: 'gridColumnCount', type: 'number', value: 6, max: 10, min: 2 },
@@ -52,4 +58,8 @@ export default [
       { id: 'showHeaderColumn', type: 'boolean', value: true },
     ]
   },
+  {
+    component: ThemingScaffold,
+    controls: []
+  }
 ];

@@ -1,0 +1,10 @@
+@use "@lib/styles" as s;
+
+.ThemeProvider {
+
+    font-size: large;
+
+    font-family:     "Antonio Regular", sans-serif;
+    box-sizing:      border-box;
+    border-collapse: collapse;
+}

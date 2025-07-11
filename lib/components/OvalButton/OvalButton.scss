@@ -20,23 +20,23 @@
     margin:          2px;
     user-select:     none;
 
-    &.OvalButton__tall {
+    &__tall {
         height: calc(100% - 10px);
     }
 
-    &.OvalButton__shrink {
+    &__shrink {
         width: fit-content;
     }
 
-    &.OvalButton__grow {
+    &__grow {
         width: calc(100% - 16px);
     }
 
-    &.OvalButton__active {
+    &--active {
         background: s.color(moon-beam);
     }
 
-    &.OvalButton--disabled {
+    &--disabled {
         background: s.color(blue-gray);
 
         &:hover { background: s.color(blue-gray); }
