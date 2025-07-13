@@ -6,4 +6,5 @@ export { CalendarGrid  } from './components/CalendarGrid/CalendarGrid.tsx';
 
 export { ThemeProvider } from './components/ThemeProvider/ThemeProvider.tsx';
 
-export * as styles from './styles/_export.module.scss';
+import * as styles from './styles/_export.module.scss';
+export { styles };
