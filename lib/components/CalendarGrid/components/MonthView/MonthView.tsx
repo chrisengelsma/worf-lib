@@ -1,4 +1,6 @@
 import React from 'react';
+
+import './MonthView.scss';
 import { OvalButton } from '@lib';
 import { DateTime } from 'luxon';
 
@@ -42,7 +44,6 @@ export const MonthView = (props: any) => {
 
   const handleDayClick = (i: number) => () => {
     const dateId: number = DateTime.fromObject({ year, month, day: i }).toUnixInteger();
-    console.log(dateId);
     props?.onDayClick(dateId);
   };
 
@@ -58,16 +59,20 @@ export const MonthView = (props: any) => {
     ));
 
     for (let i: number = 0; i < startingDayOfWeek; ++i) {
-      days.push(<OvalButton className="CalendarGrid__day-cell" disabled grow tall key={ [ 'empty0', i ].join('_') }></OvalButton>);
+      days.push(
+        <OvalButton key={ [ 'empty0', i ].join('_') }
+                    disabled
+                    grow
+                    tall/>
+      );
     }
 
     for (let i: number = 1; i <= daysInMonth; ++i) {
       const dateId: number = DateTime.fromObject({ year, month, day: i }).toUnixInteger();
       days.push(
-        <OvalButton grow
+        <OvalButton key={ [ 'day', i ].join('_') }
+                    grow
                     tall
-                    key={ [ 'day', i ].join('_') }
-                    style={ { height: '100%' } }
                     disabled={ showState && !enabledDays.includes(dateId) }
                     alert={ alertDays.includes(i) }
                     label={ i }
@@ -80,12 +85,24 @@ export const MonthView = (props: any) => {
 
     if (endingDayOfWeek > 0) {
       for (let i: number = endingDayOfWeek; i < 7; ++i) {
-        days.push(<OvalButton className="CalendarGrid__day-cell" disabled grow tall key={ [ 'empty1', i ].join('_') }></OvalButton>);
+        days.push(
+          <OvalButton key={ [ 'empty1', i ].join('_') }
+                      grow
+                      tall
+                      disabled
+          />
+        );
       }
     }
 
     return days;
   };
 
-  return drawMonth();
+  return (
+    <div className="MonthView">
+      <div className="MonthView__grid">
+        { drawMonth() }
+      </div>
+    </div>
+  );
 };

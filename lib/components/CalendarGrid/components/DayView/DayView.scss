@@ -1,0 +1,45 @@
+@use "@lib/styles" as s;
+
+.DayView {
+
+    display:        flex;
+    flex-direction: column;
+    height:         100%;
+    width:          100%;
+    overflow-y:     auto;
+
+    &__timeline {
+        flex-grow: 1;
+        position:  relative;
+    }
+
+    &__hour {
+        transition:    all 150ms ease-in-out;
+        display:       flex;
+        height:        calc(var(--hour-height, 56px) - 4px);
+        border-bottom: 4px solid s.color(burnt-orange);
+        box-sizing:    border-box;
+
+        &-label {
+            width:      60px;
+            padding:    5px;
+            text-align: right;
+            font-size:  large;
+            color:      s.color(burnt-orange);
+        }
+
+        &-content {
+            flex-grow: 1;
+            position:  relative;
+        }
+    }
+
+    .OvalButton {
+        transition:      all 150ms ease-in-out;
+        justify-content: flex-start;
+        padding:         2px 10px;
+        overflow:        hidden;
+        text-overflow:   ellipsis;
+        white-space:     nowrap;
+    }
+}

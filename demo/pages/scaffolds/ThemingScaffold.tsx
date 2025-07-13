@@ -19,8 +19,10 @@ const ThemingScaffold = (_props: any): React.ReactElement => {
           <div style={ { position: 'relative', display: 'flex', flexGrow: 1, border: '1px solid red' } }>
             { palette.colors.map((color: string, idx: number) => (
               <OvalButton key={ [ 'palette', idx, 'color', idx ].join('_') }
-                          width={ '100%' }
-                          background={ color }
+                          style={ {
+                            width: '100%',
+                            background: color,
+                          } }
                           label={ color }/>
             )) }
           </div>
@@ -35,7 +37,7 @@ const ThemingScaffold = (_props: any): React.ReactElement => {
             <div key={ [ 'palette', idx ].join('_') }
                  style={ { display: 'flex' } }>
               <OvalButton key={ [ 'color', idx ].join('_') }
-                          background={ color.value }
+                          style={ { background: color.value } }
                           label={ color.name + ' ' + color.value }
               />
             </div>

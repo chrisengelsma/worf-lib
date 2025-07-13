@@ -1,0 +1,20 @@
+@use "@lib/styles" as s;
+
+.CurrentTimeLine {
+    position:       absolute;
+    left:           0;
+    right:          0;
+    height:         4px;
+    z-index:        10;
+    pointer-events: none;
+    background:     s.color(mint-green);
+
+    &__line {
+        position:         absolute;
+        left:             65px;
+        right:            0;
+        top:              0;
+        height:           2px;
+        background-color: s.color(mint-green);
+    }
+}

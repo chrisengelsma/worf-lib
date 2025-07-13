@@ -7,6 +7,7 @@ import Controls from './components/Controls/Controls.tsx';
 import ScaffoldMenu from './components/ScaffoldMenu/ScaffoldMenu.tsx';
 import EventLog from './components/EventLog/EventLog.tsx';
 import { useApp } from './contexts';
+import { ThemeProvider } from '@lib';
 
 function WorfThemeProvider(props: { children: ReactNode }) {
   return null;
@@ -128,10 +129,15 @@ const ScaffoldPage = () => {
             <Routes>
               { ScaffoldList.map((scaffold: any, idx: number) => (
                 <Route path={ scaffold.component.name + '/*' }
-                       element={ <scaffold.component
-                         defaultProps={ defaultProps }
-                         onLogEvent={ handleLog(scaffold.component.name) }
-                       /> }/>
+                       element={
+                         <ThemeProvider>
+                           <scaffold.component
+                             defaultProps={ defaultProps }
+                             onLogEvent={ handleLog(scaffold.component.name) }
+                           />
+                         </ThemeProvider>
+                       }/>
+
               )) }
             </Routes>
           </Resizer>

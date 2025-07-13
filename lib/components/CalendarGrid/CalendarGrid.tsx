@@ -28,14 +28,23 @@ export const CalendarGrid = (props: any) => {
 
   const [ selectedDay, setSelectedDay ] = React.useState<number | null>(null);
 
+  const [ events, setEvents ] = React.useState<any[]>([]);
+  const [ dailyEvents, setDailyEvents ] = React.useState<any[]>([]);
+
   const [ theme, setTheme ] = React.useState<string>('blue-alert');
+
+  const [ hourHeight, setHourHeight ] = React.useState<number>(60);
 
   React.useEffect(() => {
     if (props?.theme) { setTheme(props?.theme); }
     if (props?.month) { setMonth(props?.month); }
     if (props?.year) { setYear(props?.year); }
+    if (props?.events) { setEvents(props?.events); }
   }, [ props ]);
 
+  React.useEffect(() => {
+    setDailyEvents(events.filter((event: any) => DateTime.fromObject(event.date).day === dateObj.day));
+  }, [ events, selectedDay ]);
 
   React.useEffect(() => {
     if (month && year) {
@@ -43,9 +52,18 @@ export const CalendarGrid = (props: any) => {
     }
   }, [ month, year ]);
 
-  const handleDayClick = (i: number)  => {
-    const dateId: number = DateTime.fromObject({ year, month, day: i }).toUnixInteger();
+  const handleDayClick = (dateId: number) => {
+    setDateObj(DateTime.fromMillis(dateId * 1000));
     setSelectedDay(dateId);
+    setDailyEvents(events.filter((event: any) => DateTime.fromObject(event.date).day === dateObj.day));
+  };
+
+  const handleZoomInClick = () => {
+    setHourHeight(hourHeight + 10);
+  };
+
+  const handleZoomOutClick = () => {
+    setHourHeight(hourHeight - 10);
   };
 
   const handleLinkClick = (link: any) => {
@@ -74,6 +92,12 @@ export const CalendarGrid = (props: any) => {
       case 'back':
         setSelectedDay(null);
         break;
+      case 'zoom-in':
+        handleZoomInClick();
+        break;
+      case 'zoom-out':
+        handleZoomOutClick();
+        break;
     }
   };
 
@@ -84,7 +108,9 @@ export const CalendarGrid = (props: any) => {
   ];
 
   const dayCalendarLinks = [
-    { id: 'back', title: 'Back' }
+    { id: 'back', title: 'Back' },
+    { id: 'zoom-in', title: '+' },
+    { id: 'zoom-out', title: '-' }
   ];
 
   return (
@@ -92,19 +118,19 @@ export const CalendarGrid = (props: any) => {
       <FramePanel sides={ { ...props.sides, right: true, top: true, bottom: true } }
                   links={ { right: selectedDay !== null ? dayCalendarLinks : monthCalendarLinks } }
                   onLinkClick={ handleLinkClick }
-                  title={ { top: Months[ month - 1 ]?.full + ' ' + year } }
+                  title={ { top: ( selectedDay ? ( dateObj.day ) : '' ) + ' ' + Months[ month - 1 ]?.full + ' ' + year } }
                   theme={ theme }
 
       >
-        <div className="CalendarGrid__grid">
-          { selectedDay !== null
-            ? <DayView/>
-            : <MonthView enabledDays={ props?.enabledDays }
-                         alertDays={ props?.alertDays }
-                         month={ month }
-                         year={ year }
-                         onDayClick={ handleDayClick }/> }
-        </div>
+        { selectedDay !== null
+          ? <DayView events={ dailyEvents }
+                     hourHeight={ hourHeight }
+          />
+          : <MonthView enabledDays={ props?.enabledDays }
+                       alertDays={ props?.alertDays }
+                       month={ month }
+                       year={ year }
+                       onDayClick={ handleDayClick }/> }
       </FramePanel>
     </div>
   );
